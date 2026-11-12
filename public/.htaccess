@@ -1,0 +1,6 @@
+# Algunos XAMPP/Apache no reenvían el header Authorization a PHP
+# por defecto. Esta línea lo restaura para que api.php pueda leer
+# el token Bearer del login móvil.
+RewriteEngine On
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]
